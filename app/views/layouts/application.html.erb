@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <%= link_to("All products", products_path) %>
+    <%= link_to("Create a new product", new_product_path) %>
 
+
+  </nav>
 <%= yield %>
 
 </body>

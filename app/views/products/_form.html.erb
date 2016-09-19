@@ -1,0 +1,32 @@
+<%= form_for @product do |f| %>
+
+<p>
+  <%= f.label :product_name %>
+  <%= f.text_field :product_name, :required => true %>
+</p>
+<br>
+
+<p>
+  <%= f.label :product_desc1 %>
+  <%= f.text_area :product_desc1, :required => true %>
+</p>
+<br>
+
+<p>
+  <%= f.label :price %>
+  <%= f.number_field :price, :required => true %>
+</p>
+<br>
+
+<p>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+</p>
+<br>
+
+<p>
+  <%= f.label :brand %>
+  <%= f.collection_select :brand_id, Brand.all, :id, :brand_name %>
+</p>
+<%= f.submit "Submit", :class=> "submit_format" %>
+<% end %>
