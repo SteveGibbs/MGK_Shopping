@@ -4,7 +4,8 @@
   <p>Name: <%= link_to(prod.product_name, product_path(prod)) %></p>
   <p>Price: <%= number_to_currency(prod.price) %></p>
   <p>Brand: <%= prod.brand.brand_name %></p>
+  <p>Product id: <%= prod.id %></p>
   <p><%= image_tag(prod.image) %></p>
-
+  <%= button_to "Add #{prod.product_name} to cart", items_path(:product_id => prod.id) %>
   <br>
 <% end %>

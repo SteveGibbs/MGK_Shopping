@@ -1,0 +1,22 @@
+<h1>Shopping Cart</h1>
+
+<p>Cart id: <%= @current_cart.id %></p>
+<p>Items: <%= @current_cart.items.length %></p>
+
+<% @current_cart.items.each do |item| %>
+  <ul>
+    <li>Product: <%= item.product.product_name %></li>
+    <li>Price: <%= number_to_currency(item.product.price) %></li>
+    <li>Quantity: <%= item.quantity %></li>
+    <li>
+      <%= link_to "Add quantity", item_add_path(:id => item), method: :post %> |
+      <%= link_to "Reduce quantity", item_reduce_path(:id => item), method: :post %> |
+      <%= link_to "Remove from cart", item_path(item), method: :delete %>
+    </li>
+  </ul>
+<% end %>
+
+<h3>Subtotal: <%= number_to_currency(@current_cart.subtotal) %></h3>
+<h3>Tax (10%): <%= number_to_currency(@current_cart.tax * @current_cart.subtotal) %></h3>
+<h3>Shipping: <%= number_to_currency(@current_cart.shipping) %></h3>
+<h3>Total: <%= number_to_currency(@current_cart.total) %></h3>

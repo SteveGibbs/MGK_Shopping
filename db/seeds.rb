@@ -34,3 +34,5 @@ puts "Product names: #{Product.all.pluck("product_name")}"
 puts "Mercer watches include: #{b1.products.pluck("product_name")}"
 puts "Bowery watches include: #{b2.products.pluck("product_name")}"
 puts "Gramercy watches include: #{b3.products.pluck("product_name")}"
+
+Cart.destroy_all
