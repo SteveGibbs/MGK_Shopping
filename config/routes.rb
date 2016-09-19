@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'products/index'
+
+  get 'products/new'
+
+  get 'products/edit'
+
+  get 'products/new'
+
+  get 'products/show'
+
+  get 'session/new'
+
+  get 'pages/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
