@@ -36,3 +36,5 @@ puts "Bowery watches include: #{b2.products.pluck("product_name")}"
 puts "Gramercy watches include: #{b3.products.pluck("product_name")}"
 
 Cart.destroy_all
+
+Order.destroy_all

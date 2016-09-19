@@ -1,0 +1,28 @@
+<h1>Orders checkout</h1>
+
+<h3>Cart items confirmation</h3>
+
+<% @cart.items.each do |item| %>
+  <ul>
+    <li>Product: <%= item.product.product_name %></li>
+    <li>Price: <%= number_to_currency(item.product.price) %></li>
+    <li>Quantity: <%= item.quantity %></li>
+  </ul>
+<% end %>
+
+<h3>Subtotal: <%= number_to_currency(@cart.subtotal) %></h3>
+<h3>Tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></h3>
+<h3>Shipping: <%= number_to_currency(@cart.shipping) %></h3>
+<h3>Total: <%= number_to_currency(@cart.total) %></h3>
+
+<hr>
+
+<h3>Create new order</h3>
+
+<fieldset>
+  <legend>Enter payment details</legend>
+
+  <%= render "form" %>
+</fieldset>
+
+<h1 style="color: red">Placeholder: add Stripe API payments</h1>

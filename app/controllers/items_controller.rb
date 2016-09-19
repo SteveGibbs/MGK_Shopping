@@ -23,6 +23,12 @@ class ItemsController < ApplicationController
   end
 
   def reduce_quantity
+    @item = Item.find(params[:id])
+    if @item.quantity > 1
+      @item.quantity -= 1
+    end
+    @item.save
+    redirect_to carts_show_path(@current_cart)
   end
 
 
