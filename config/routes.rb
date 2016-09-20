@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get 'items/:id' => 'items#show', as: 'item'
   delete 'items/:id' => 'items#destroy', as: 'item_delete'
 
-  resources :products, :orders
+  resources :products, :orders, :charges
 end

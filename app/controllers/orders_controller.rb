@@ -9,17 +9,18 @@ class OrdersController < ApplicationController
     # We watn to pass in all the cart items to the order model
     @current_cart.items.each do |item|
       @order.items << item
-      item.cart_id = nil
+      # item.cart_id = nil
     end
 
     @order.save
-    Cart.destroy(session[:cart_id])
-    session[:cart_id] = nil
-    redirect_to root_path
+    # Cart.destroy(session[:cart_id])
+    # session[:cart_id] = nil
+    redirect_to new_charge_path
   end
 
   def index
     @orders = Order.all
+
   end
 
   def show
