@@ -38,6 +38,11 @@ class ItemsController < ApplicationController
     redirect_to carts_show_path(@current_cart)
   end
 
+
+
+
+
+
   private
     def item_params
       params.require(:item).permit(:product_id, :cart_id, :order_id, :quantity)

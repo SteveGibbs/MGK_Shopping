@@ -51,3 +51,6 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+## Gemfile for Rails 3+, Sinatra, and Merb
+gem 'will_paginate', '~> 3.1.0'

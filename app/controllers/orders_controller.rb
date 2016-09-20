@@ -15,12 +15,16 @@ class OrdersController < ApplicationController
     @order.save
     # Cart.destroy(session[:cart_id])
     # session[:cart_id] = nil
+
     redirect_to new_charge_path
   end
 
   def index
     @orders = Order.all
-
+    respond_to do |f|
+      f.html {}
+      f.json { render :json => @orders.to_json(:include => {:items => {:include => :product } } )}
+    end
   end
 
   def show
@@ -28,6 +32,7 @@ class OrdersController < ApplicationController
 
   def edit
   end
+
 
   private
     def order_params

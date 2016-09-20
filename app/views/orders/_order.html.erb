@@ -1,4 +1,4 @@
-<h1>Admin page: Orders</h1>
+
 
 <% @orders.each do |order| %>
     <ul>
@@ -10,14 +10,6 @@
         <% order.items.each do |item| %>
         <li>Product: <%= item.product.product_name %>; Quantity: <%= item.quantity %></li>
         <% end %>
-        
       </ul>
     </ul>
 <% end %>
-
-<p class="order_display"></p>
-<div id="order_display">
-
-<button id = "order_display">Refresh Screen</button>
-
-</div>
