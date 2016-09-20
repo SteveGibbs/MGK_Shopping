@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'competitor' => 'pages#competitor', as: 'competitor'
 
-  get 'carts/:id' => 'carts#show', as: 'carts_show'
+  get 'carts/:id' => 'carts#show', as: 'cart'
   delete 'carts/:id' => 'carts#destroy'
 
   post 'items/:id/add' => "items#add_quantity", as: "item_add"

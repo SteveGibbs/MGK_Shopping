@@ -3,18 +3,20 @@
 <p>Cart id: <%= @cart.id %></p>
 <p>Items: <%= @cart.items.length %></p>
 
+
 <% @cart.items.each do |item| %>
-  <ul>
+<ul>
     <li>Product: <%= item.product.product_name %></li>
     <li>Price: <%= number_to_currency(item.product.price) %></li>
     <li>Quantity: <%= item.quantity %></li>
-    <li>
-      <%= link_to "Add one", item_add_path(:id => item), method: :post %>
-      <%= link_to "Reduce one", item_reduce_path(:id => item), method: :post %>
-      <%= link_to "Remove from cart", item_path(item), method: :delete %>
-    </li>
-  </ul>
+    <ul>
+      <li><%= link_to "Add one", item_add_path(:id => item), method: :post %></li>
+      <li><%= link_to "Reduce one", item_reduce_path(:id => item), method: :post %></li>
+      <li><%= link_to "Remove from cart", item_path(item), method: :delete %></li>
+    </ul>
+</ul>
 <% end %>
+
 
 <h3>Subtotal: <%= number_to_currency(@cart.subtotal) %></h3>
 <h3>Tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></h3>
@@ -23,7 +25,7 @@
 
 <br>
 
-<%= link_to "Empty cart", carts_show_path(@cart), method: :delete, data: {confirm: "Are you sure you want to empty your cart?"} %>
+<%= link_to "Empty cart", cart_path(@cart), method: :delete, data: {confirm: "Are you sure you want to empty your cart?"} %>
 
 <br>
 
