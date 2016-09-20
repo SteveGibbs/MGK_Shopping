@@ -15,7 +15,7 @@
     <%= link_to("All orders (Admin)", orders_path) %>
     <%= link_to("Competitor Scrape (Admin)", competitor_path) %>
     <br>
-    <%= link_to("Current cart: #{@current_cart.id}",carts_show_path(@current_cart)) %>
+    <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
   </nav>
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
