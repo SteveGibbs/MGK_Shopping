@@ -31,11 +31,12 @@
      var $li7 = $("<li>").text("Total $" + total);
      var $li8 = $("<br>").text("");
       // document.body.innerText = "";
+    $(".clear").innerHTML = "";
       $(".clear").append($li4).append($li5).append($li6).append($li7).append($li8);
       // $(".clear").append( $li ).append($li2).append($li3).append($li4).append($li5).append($li6).append($li7).append($li8);
     //  $("body").append( $li2 );
 
-    // $(".clear").innerHTML = "";
+
      console.log( name );
      console.log(address1);
      console.log(status);
@@ -55,8 +56,6 @@
 
 
  };
-
-
 
  $(document).on("turbolinks:load", function(){
    $("#order_display").on("click", getOrderDisplay);
