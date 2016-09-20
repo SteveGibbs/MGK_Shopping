@@ -36,6 +36,7 @@ class PagesController < ApplicationController
       gotoshop = el.css('.action .gotoshop a').attribute('href').to_s
 
       @getprice[:female] << {:name => name, :price => price, :image => image, :supplier => supplier, :gotoshop => gotoshop}
+
     end
 
     # Render data as JSON for future jQuery work
@@ -45,5 +46,5 @@ class PagesController < ApplicationController
     end
 
   end
-  #  @getprice = getprice.all.paginate(:page => params[:page], :per_page => 5)
+  # @getprice[:male].paginate(:page => params[:page], :per_page => 5)
 end
