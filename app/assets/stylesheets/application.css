@@ -19,8 +19,9 @@ body{
 
 }
 
-p{
+p, li{
   font-size: 14px;
+  color: #5a5859;
 }
 
 img {
@@ -28,5 +29,12 @@ img {
 }
 
 img:hover {
-  transform: scale(1.4);
+  transform: scale(1.6);
+}
+a {
+  text-align: justify;
+}
+
+a:hover {
+  color: #e3a797;
 }
