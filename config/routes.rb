@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
+  get 'competitor' => 'pages#competitor', as: 'competitor'
+
   get 'carts/:id' => 'carts#show', as: 'carts_show'
   delete 'carts/:id' => 'carts#destroy'
 

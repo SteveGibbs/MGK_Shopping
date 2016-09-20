@@ -38,6 +38,8 @@ group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
   gem 'annotate'
+  gem 'httparty'
+  gem 'nokogiri'
 end
 
 group :development do
@@ -50,6 +52,8 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'httparty'
+  gem 'nokogiri'  
 end
 
 ## Gemfile for Rails 3+, Sinatra, and Merb
