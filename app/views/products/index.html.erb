@@ -1,5 +1,7 @@
 <h1>MGK Watches</h1>
 
+<h3>Free Shipping in Australia</h3>
+
 <% @products.each do |prod| %>
   <p>Style  <%= link_to(prod.product_name, product_path(prod)) %></p>
   <p>Price  <%= number_to_currency(prod.price) %></p>
@@ -9,3 +11,6 @@
   <%= button_to "Add #{prod.brand.brand_name} - #{prod.product_name} to cart", items_path(:product_id => prod.id) %>
   <br>
 <% end %>
+
+
+ <%= will_paginate @products %>
