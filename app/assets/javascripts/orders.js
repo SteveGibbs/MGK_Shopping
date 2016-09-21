@@ -48,10 +48,31 @@ var getOrderDisplay = function() {
 };
 
 $(document).on("turbolinks:load", function() {
-  $("#order_display").on("click", getOrderDisplay);
+
+  var myTimer;
+  var orderTimer = function() {
+    myTimer = window.setInterval(function(){
+      getOrderDisplay();
+    },12000);
+  };
+
+  $("#order_display").on("click", orderTimer);
+  // $("#order_display").on("click", getOrderDisplay);
   $("#stop_live_orders").on("click", function() {
     console.log("testing once again");
-    window.clearInterval(getOrderDisplay);
+    window.clearInterval(myTimer);
+
   });
 
 });
+//
+// $(document).ready(function(){
+// getChuckQuotes();
+// chuckTimer = window.setInterval(function(){
+//   getChuckQuotes();
+// }, 1000);
+// $chuckStopButton.on("click", function(){
+//   window.clearInterval(chuckTimer);
+// });
+//
+// });
