@@ -12,14 +12,14 @@
 <body>
   <nav>
     <%= link_to("All products", products_path) %>
-
+    <br>
     <!-- Admin view -->
 
     <% unless @current_user %>
       <%= link_to("Admin login", login_path) %>
     <% else %>
-      <%= link_to("New Product", new_product_path) %>
-      <%= link_to("All Orders", orders_path) %>
+      <%= link_to("New Product", new_product_path) %> |
+      <%= link_to("All Orders", orders_path) %> |
       <%= link_to("Competitors", competitor_path) %>
     <% end %>
 
@@ -27,12 +27,13 @@
 
     <% if !@current_user %>
       <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
     <% end %>
 
     <% if @current_user %>
       <p>Logged : <%= @current_user.first_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</p>
     <% end %>
-    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
   </nav>
 
 
