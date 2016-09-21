@@ -26,13 +26,14 @@
      var orderID = data[i].items[j].order_id;
      var total = quantity * price;  //hack for display -  may select multiple items - to be revisited
      var $li4 = $("<li>").text("Purchased " + quantity + " of " + productName + " items @ price of $ " + price + " for $ " + total + " on order_id " + orderID);
-     
-      $(".clear_display").append($li4);
 
+      $(".clear_display").append($li4);
+      var url = "/orders/id/";
+      var $li5 = '<a href=';
   }
 }
  };
-
+// $("div#id").append('<a href="' + url + '">' + text + '</a>');
 
  var baseURL = "/orders";
  var getOrderDisplay = function(){
