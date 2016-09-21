@@ -11,12 +11,28 @@
 <body>
   <nav>
     <%= link_to("All products", products_path) %>
-    <%= link_to("Create a new product", new_product_path) %>
-    <%= link_to("All orders (Admin)", orders_path) %>
-    <%= link_to("Competitor Scrape (Admin)", competitor_path) %>
     <br>
-    <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
+    <!-- Admin view -->
+
+    <% unless @current_user %>
+      <%= link_to("Admin login", login_path) %>
+    <% else %>
+      <%= link_to("New Product", new_product_path) %>
+      <%= link_to("All Orders", orders_path) %>
+      <%= link_to("Competitors", competitor_path) %>
+    <% end %>
+
+    <!-- Admin view -->
+    <br>
+    <% if !@current_user %>
+      <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
+    <% end %>
+
+    <% if @current_user %>
+      <p>Logged : <%= @current_user.first_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</p>
+    <% end %>
   </nav>
+
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 <%= yield %>

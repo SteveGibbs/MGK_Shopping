@@ -40,3 +40,10 @@ Cart.destroy_all
 Order.destroy_all
 
 Item.destroy_all
+
+User.destroy_all
+
+admin = User.create :first_name => "admin", :email => "admin@ga.co", :password => "chicken", :password_confirmation => "chicken", :admin => "true"
+
+puts "User count: #{User.all.length}"
+puts "Admin email: #{admin.email}, password: #{admin.password}"
