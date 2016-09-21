@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
   <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
   <nav>
@@ -23,7 +24,7 @@
     <% end %>
 
     <!-- Admin view -->
-  
+
     <% if !@current_user %>
       <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
     <% end %>
@@ -31,6 +32,7 @@
     <% if @current_user %>
       <p>Logged : <%= @current_user.first_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</p>
     <% end %>
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
   </nav>
 
 
