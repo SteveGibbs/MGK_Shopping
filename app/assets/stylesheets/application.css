@@ -23,7 +23,7 @@ label {
     color: black;
     font-size: 14px;
     display: inline-block;
-  
+
 }
 
 input#product_product_name, input#product_price, input#product_image {
@@ -44,6 +44,16 @@ img {
 .prod1:hover {
   transform: scale(1.1);
 }
+
+.prod2:hover {
+  transform: scale(1.6);
+  text-align: center;
+}
+
+form.button_to, input.prod3 {
+  text-align: center;
+}
+
 a {
   color: #A5A5A5;
   text-align: justify;

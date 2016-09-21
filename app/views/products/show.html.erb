@@ -1,13 +1,22 @@
-<h1>This is the page of <%= @product.product_name %></h1>
-
-  <p>Price: <%= number_to_currency(@product.price) %></p>
-  <p>Brand: <%= @product.brand.brand_name %></p>
-  <p>Description: <%= @product.product_desc1 %></p>
-  <p><%= image_tag(@product.image) %></p>
+<h1 class="main_page"><%= @product.brand.brand_name %></h1>
+<br>
+<p class="show_page1"><%= image_tag(@product.image, :class => "prod2") %></p>
+<br>
+<br>
+<p class="show_page1">Style:
+    <%= @product.product_name %></p>
+<br>
+<p class="show_page1">Description:
+    <%= @product.product_desc1 %></p>
+    <br>
+    <p class="show_page1">Price:
+        <%= number_to_currency(@product.price) %></p>
+        <br>
+        <br>
 
 <% unless @current_user %>
-  <%= button_to "Add to cart", items_path(:product_id => @product.id) %>
+<%= button_to "Add to cart", items_path(:product_id => @product.id), :class => "prod3" %>
 <% else %>
-  <%= link_to("Edit", edit_product_path(@product)) %>
-  <%= link_to("Delete", product_path(@product),method: :delete, data: {confirm: "Are you sure?"}) %>
+<%= link_to("Edit", edit_product_path(@product)) %>
+<%= link_to("Delete", product_path(@product),method: :delete, data: {confirm: "Are you sure?"}) %>
 <% end %>
