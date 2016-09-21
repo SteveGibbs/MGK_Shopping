@@ -13,6 +13,10 @@ class OrdersController < ApplicationController
     end
 
     @order.save
+    # Store the order id in a session
+    if @order.save
+      session[:order_id] = @order.id
+    end
     # Cart.destroy(session[:cart_id])
     # session[:cart_id] = nil
 
@@ -28,6 +32,9 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @cart = @current_cart
+    @total_amount_to_be_paid = @cart.total
   end
 
   def edit
