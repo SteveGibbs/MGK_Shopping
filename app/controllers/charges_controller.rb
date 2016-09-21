@@ -2,13 +2,12 @@ class ChargesController < ApplicationController
   def new
     @cart = @current_cart
     @total_amount_to_be_paid = @cart.total
-
-
   end
 
   def create
-    # Amount in cents
-    @amount = 500
+
+    #STRIPE
+    @amount = 500 # Amount in cents
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -18,6 +17,7 @@ class ChargesController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => @amount,
+      :receipt_email => params[:stripeEmail],
       :description => 'Rails Stripe customer',
       :currency    => 'aud'
     )
@@ -28,20 +28,26 @@ class ChargesController < ApplicationController
     #   item.cart_id = nil
     # end
 
+    #CHANGING ORDER STATUS TO "PAID"
     @order_id = @current_cart.items.first.order_id
     @order = Order.find_by(:id => @order_id)
     @order.status = "Paid"
-    @order.save
+    @customer = @order.name #this is actually an email!
+    @address = @order.address1
+    @items = @order.items
+    if @order.save
 
+    #MAILER
+      UserMailer.welcome(@customer, @address, @items).deliver_now
+    end
 
-    # binding.pry
-
-
+    #DESTROYING THE CART ONCE THE PAYMENT IS MADE THROUGH STRIPE
     cart = Cart.find_by(:id => session[:cart_id])
     Cart.destroy(session[:cart_id]) #SK: current_cart is destroyed once payment POST req is finished
     session[:cart_id] = nil
 
 
+  #STRIPE
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

@@ -1,0 +1,11 @@
+<h1>Thanks for signing up! Your receipt is below</h1>
+<p>Your email:<%= @customer %> </p>
+<p>Your address: <%= @address %> </p>
+<br>
+<hr>
+<p>Your receipt:</p>
+<ul>
+  <% @items.each do |item| %>
+    <li>Brand: <%=item.product.brand.brand_name %> | Item: <%= item.product.product_name %> | Quantity: <%= item.quantity %> | Cost: $<%= item.product.price * item.quantity%></li>
+  <% end %>
+</ul>
