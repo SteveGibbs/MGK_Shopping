@@ -29,7 +29,7 @@ img {
 }
 
 .prod1:hover {
-  transform: scale(1.6);
+  transform: scale(1.1);
 }
 a {
   color: #A5A5A5;
@@ -39,7 +39,11 @@ a {
 a:hover {
   color: #e3a797;
 }
+
+
+
 .slick-slide {
   width: 185px;
-  
+  max-width: 75%;
+
 }

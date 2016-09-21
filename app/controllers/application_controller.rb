@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :current_cart
   before_action :fetch_user
+  before_action :fetch_order
 
   private
     # Create new empty cart when new user visits
@@ -29,6 +30,12 @@ class ApplicationController < ActionController::Base
       @current_user = User.find_by(:id => session[:user_id]) if session[:user_id]
 
       session[:user_id] = nil unless @current_user.present?
+    end
+
+    def fetch_order
+      @current_order = Order.find_by(:id => session[:order_id]) if session[:order_id]
+
+      session[:order_id] = nil unless @current_order.present?
     end
 
 end

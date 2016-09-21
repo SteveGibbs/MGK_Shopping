@@ -22,5 +22,7 @@ $(document).on("turbolinks:load", function() {
     variableWidth: true,
     autoplay: true,
     autoplaySpeed: 3000,
+    
+
   });
 });

@@ -7,30 +7,37 @@
   <%= csrf_meta_tags %>
   <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
   <nav>
     <%= link_to("All products", products_path) %>
     <br>
-    <!-- Admin view -->
 
+    <!-- Admin view -->
     <% unless @current_user %>
       <%= link_to("Admin login", login_path) %>
     <% else %>
-      <%= link_to("New Product", new_product_path) %>
-      <%= link_to("All Orders", orders_path) %>
+      <%= link_to("New Product", new_product_path) %> |
+      <%= link_to("All Orders", orders_path) %> |
       <%= link_to("Competitors", competitor_path) %>
-    <% end %>
+    <% end %> <!-- Admin view -->
 
-    <!-- Admin view -->
-    <br>
-    <% if !@current_user %>
-      <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
+    <% unless @current_user %>
+      <% if @current_order %>
+        <%= link_to("Current order: #{@current_order.id}", order_path(@current_order)) %>
+        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+      <% else %>
+        <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <% end %>
     <% end %>
 
     <% if @current_user %>
       <p>Logged : <%= @current_user.first_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</p>
     <% end %>
+
+
   </nav>
 
 

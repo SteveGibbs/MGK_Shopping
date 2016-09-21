@@ -1,6 +1,5 @@
-<h1>MGK Watches</h1>
+<h1 class = "main_page">MGK Watches</h1>
 
-<h3>Free Shipping in Australia</h3>
 
 <div class="autoplay">
 
@@ -24,20 +23,29 @@
 </div>
 </div>
 
- <br>
- <br>
-
 <% @products.each do |prod| %>
-  <p>Style  <%= link_to(prod.product_name, product_path(prod)) %></p>
-  <p>Price  <%= number_to_currency(prod.price) %></p>
+
+<div class="case1">
   <p>Brand  <%= prod.brand.brand_name %></p>
-  <p>Product_id  <%= prod.id %></p>
-  <p><%= image_tag(prod.image, :class => "prod1") %></p>
-  <%= button_to "Add #{prod.brand.brand_name} - #{prod.product_name} to cart", items_path(:product_id => prod.id) %>
-  <br>
+  <p><%= link_to image_tag(prod.image, :class => "prod1"), product_path(prod) %></p>
+  <p><%= link_to(prod.product_name, product_path(prod)) %></p>
+  <p>Price  <%= number_to_currency(prod.price) %></p>
+  <p class="case3">Product Code  <%= prod.id %></p>
+
+  <% unless @current_user %>
+    <% unless @current_cart.products.include?(prod) %>
+      <%= button_to "Add to cart", items_path(:product_id => prod.id) %>
+    <% else %>
+      <%= button_to "Add another", items_path(:product_id => prod.id) %>
+    <% end %>
+  <% else %>
+    <%= button_to "Admin Edit", edit_product_path(prod), method: :get %>
+  <% end %>
+
+  </div>
 <% end %>
 
-
+<div class="case3">
+  <br>
  <%= will_paginate @products %>
-
- <image_tag class="trythis"></image_tag>
+</div>
