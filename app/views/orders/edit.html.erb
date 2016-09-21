@@ -3,3 +3,5 @@
 
 
 <%= render "form" %>
+
+<%= link_to "Delete Order", @order, :method => :delete, :data => { :confirm => "Please confirm?"} %>
