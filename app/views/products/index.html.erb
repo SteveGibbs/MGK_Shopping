@@ -31,7 +31,7 @@
 <div class="case1">
   <p>Brand  <%= prod.brand.brand_name %></p>
   <p><%= image_tag(prod.image, :class => "prod1") %></p>
-  <p>Style  <%= link_to(prod.product_name, product_path(prod)) %></p>
+  <p><%= link_to(prod.product_name, product_path(prod)) %></p>
   <p>Price  <%= number_to_currency(prod.price) %></p>
   <p class="case3">Product Code  <%= prod.id %></p>
   <%= button_to "Add to cart", items_path(:product_id => prod.id) %>
