@@ -4,7 +4,6 @@ class PagesController < ApplicationController
 
   def competitor
 
-
     # Visit getprice.com watches and filter for make watches between $100 and $200
     male_page = HTTParty.get('http://www.getprice.com.au/men-watches-watches-gpc205t21192mp200np100.htm')
     female_page = HTTParty.get('http://www.getprice.com.au/women-watches-watches-gpc205t21191mp200np100.htm')

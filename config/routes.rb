@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'products#index'
 
   get 'competitor' => 'pages#competitor', as: 'competitor'
 
@@ -12,5 +12,10 @@ Rails.application.routes.draw do
   get 'items/:id' => 'items#show', as: 'item'
   delete 'items/:id' => 'items#destroy', as: 'item_delete'
 
-  resources :products, :orders, :charges
+  get '/login' => 'session#new', :as => 'login'
+  post '/login' => 'session#create'
+  delete '/logout' => 'session#destroy', :as => 'logout'
+
+  resources :products, :orders, :charges, :users
+
 end
