@@ -62,5 +62,8 @@
 
  $(document).on("turbolinks:load", function(){
    $("#order_display").on("click", getOrderDisplay);
+   $("#stop_live_orders").on("click", function(){
+ console.log("testing once again");
+  window.clearInterval(getOrderDisplay);});
 
  });

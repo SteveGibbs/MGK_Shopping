@@ -28,7 +28,7 @@ img {
   height: 180px;
 }
 
-img:hover {
+.prod1:hover {
   transform: scale(1.6);
 }
 a {
@@ -38,4 +38,8 @@ a {
 
 a:hover {
   color: #e3a797;
+}
+.slick-slide {
+  width: 185px;
+  
 }
