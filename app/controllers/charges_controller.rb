@@ -2,8 +2,6 @@ class ChargesController < ApplicationController
   def new
     @cart = @current_cart
     @total_amount_to_be_paid = @cart.total
-
-
   end
 
   def create

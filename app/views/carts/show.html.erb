@@ -20,10 +20,10 @@
   <% end %>
 
 
-  <h3>Subtotal: <%= number_to_currency(@cart.subtotal) %></h3>
-  <h3>Tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></h3>
-  <h3>Shipping: <%= number_to_currency(@cart.shipping) %></h3>
-  <h3>Total: <%= number_to_currency(@cart.total) %></h3>
+  <p><strong>Subtotal: <%= number_to_currency(@cart.subtotal) %></strong></p>
+  <p>Plus tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></p>
+  <p>Plus shipping: <%= number_to_currency(@cart.shipping) %></p>
+  <p><strong>Total: <%= number_to_currency(@cart.total) %></strong></p>
 
   <br>
 
