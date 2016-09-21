@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on("turbolinks:load", function() {
+  $('.autoplay').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    variableWidth: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  });
+});

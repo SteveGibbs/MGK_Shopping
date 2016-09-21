@@ -2,15 +2,42 @@
 
 <h3>Free Shipping in Australia</h3>
 
+<div class="autoplay">
+
+<div>
+<%= image_tag("watch1.jpg", :class => "autoplay") %>
+</div>
+<div>
+<%= image_tag("watch2.jpg", :class => "autoplay") %>
+</div>
+<div>
+<%= image_tag("watch3.jpg", :class => "autoplay") %>
+</div>
+<div>
+<%= image_tag("watch4.jpg", :class => "autoplay") %>
+</div>
+<div>
+<%= image_tag("watch5.jpg", :class => "autoplay") %>
+</div>
+<div>
+<%= image_tag("watch6.jpg", :class => "autoplay") %>
+</div>
+</div>
+
+ <br>
+ <br>
+
 <% @products.each do |prod| %>
   <p>Style  <%= link_to(prod.product_name, product_path(prod)) %></p>
   <p>Price  <%= number_to_currency(prod.price) %></p>
   <p>Brand  <%= prod.brand.brand_name %></p>
   <p>Product_id  <%= prod.id %></p>
-  <p><%= image_tag(prod.image) %></p>
+  <p><%= image_tag(prod.image, :class => "prod1") %></p>
   <%= button_to "Add #{prod.brand.brand_name} - #{prod.product_name} to cart", items_path(:product_id => prod.id) %>
   <br>
 <% end %>
 
 
  <%= will_paginate @products %>
+
+ <image_tag class="trythis"></image_tag>
