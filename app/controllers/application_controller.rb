@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :fetch_user
   before_action :fetch_order
 
+
   private
     # Create new empty cart when new user visits
     def current_cart

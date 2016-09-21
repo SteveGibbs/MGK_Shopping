@@ -18,6 +18,18 @@ body{
   font-family: "Lato";
 
 }
+label {
+    margin-left: 50px;
+    color: black;
+    font-size: 14px;
+    display: inline-block;
+  
+}
+
+input#product_product_name, input#product_price, input#product_image {
+  background-color: yellow;
+  width: auto;
+}
 
 p, li{
   font-size: 14px;
