@@ -24,20 +24,27 @@
 </div>
 </div>
 
- <br>
- <br>
+
+
 
 <% @products.each do |prod| %>
+
+<div class="testcase">
+  <p><%= image_tag(prod.image, :class => "prod1") %></p>
   <p>Style  <%= link_to(prod.product_name, product_path(prod)) %></p>
   <p>Price  <%= number_to_currency(prod.price) %></p>
   <p>Brand  <%= prod.brand.brand_name %></p>
   <p>Product_id  <%= prod.id %></p>
-  <p><%= image_tag(prod.image, :class => "prod1") %></p>
-  <%= button_to "Add #{prod.brand.brand_name} - #{prod.product_name} to cart", items_path(:product_id => prod.id) %>
-  <br>
+  <%= button_to "Add to cart", items_path(:product_id => prod.id) %>
+
+  <%#= button_to "Add #{prod.brand.brand_name} - #{prod.product_name} to cart", items_path(:product_id => prod.id) %>
+
+  </div>
 <% end %>
 
-
+<div class="testcase2">
  <%= will_paginate @products %>
+</div>
 
- <image_tag class="trythis"></image_tag>
+
+<i class="fa fa-shopping-cart" aria-hidden="true"></i>

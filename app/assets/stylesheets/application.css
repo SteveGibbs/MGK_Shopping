@@ -39,7 +39,11 @@ a {
 a:hover {
   color: #e3a797;
 }
+
+
+
 .slick-slide {
   width: 185px;
-  
+  max-width: 75%;
+
 }

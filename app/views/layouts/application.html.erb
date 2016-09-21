@@ -11,7 +11,7 @@
 <body>
   <nav>
     <%= link_to("All products", products_path) %>
-    <br>
+
     <!-- Admin view -->
 
     <% unless @current_user %>
@@ -23,7 +23,7 @@
     <% end %>
 
     <!-- Admin view -->
-    <br>
+  
     <% if !@current_user %>
       <%= link_to("Current cart: #{@current_cart.id}",cart_path(@current_cart)) %>
     <% end %>
