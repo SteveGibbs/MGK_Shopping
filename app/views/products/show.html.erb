@@ -1,8 +1,7 @@
 <h1 class="main_page"><%= @product.brand.brand_name %></h1>
-<br>
+
 <p class="show_page1"><%= image_tag(@product.image, :class => "prod2") %></p>
-<br>
-<br>
+
 <p class="show_page1">Style:
     <%= @product.product_name %></p>
 <br>
@@ -11,12 +10,25 @@
     <br>
     <p class="show_page1">Price:
         <%= number_to_currency(@product.price) %></p>
-        <br>
-        <br>
 
-<% unless @current_user %>
-<%= button_to "Add to cart", items_path(:product_id => @product.id), :class => "prod3" %>
-<% else %>
-<%= link_to("Edit", edit_product_path(@product)) %>
-<%= link_to("Delete", product_path(@product),method: :delete, data: {confirm: "Are you sure?"}) %>
-<% end %>
+
+
+        <% unless @current_user %>
+        <%= button_to "Add to cart", items_path(:product_id => @product.id), :class => "prod3" %>
+        <% else %>
+        <%= link_to("Edit", edit_product_path(@product)) %>
+        <%= link_to("Delete", product_path(@product),method: :delete, data: {confirm: "Are you sure?"}) %>
+        <% end %>
+
+    <br>
+    <br>
+        <div dir="rtl" class="single-item-rtl">
+        <div>
+        <%= image_tag("Watches.jpg") %>
+        </div>
+        <div>
+        <%= image_tag("Straps.png") %>
+        </div>
+
+
+        </div>
