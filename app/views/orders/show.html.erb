@@ -24,7 +24,7 @@
 <p>Address: <%= @order.address1 %></p>
 <p>Status: <%= @order.status %></p>
 
-<% if @order.status == "Paid" %>
+<% if @order.status == "Paid" || @order.status == "Shipped" %>
   <h3>You have paid</h3>
 <% else %>
   <%= form_tag charges_path do %>

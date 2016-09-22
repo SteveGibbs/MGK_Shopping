@@ -2,6 +2,23 @@
 <p>Find me in app/views/orders/edit.html.erb</p>
 
 
-<%= render "form" %>
+<%= form_for(@order) do |f| %>
+  <p>
+    <%= f.label "Email" %> <br>
+    <%= f.email_field :name, :required => true, :autofocus => true %>
+  </p>
+  <p>
+    <%= f.label "Address" %> <br>
+    <%= f.text_field :address1 %>
+  </p>
+  <p>
+    <%= f.label "Status" %> <br>
+    <%= f.select :status,["in progress","Paid","Shipped"] %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <%= link_to "Delete Order", @order, :method => :delete, :data => { :confirm => "Please confirm?"} %>
