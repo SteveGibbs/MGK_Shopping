@@ -2,54 +2,55 @@
 <br>
 <br>
 
-<h1 class = "main_page">All products</h1>
-
+<h1 class="main_page">All products</h1>
 
 <div class="autoplay">
 
-<div>
-<%= image_tag("watch1.jpg", :class => "autoplay") %>
-</div>
-<div>
-<%= image_tag("watch2.jpg", :class => "autoplay") %>
-</div>
-<div>
-<%= image_tag("watch3.jpg", :class => "autoplay") %>
-</div>
-<div>
-<%= image_tag("watch4.jpg", :class => "autoplay") %>
-</div>
-<div>
-<%= image_tag("watch5.jpg", :class => "autoplay") %>
-</div>
-<div>
-<%= image_tag("watch6.jpg", :class => "autoplay") %>
-</div>
+    <div>
+        <%= image_tag("watch1.jpg", :class => "autoplay") %>
+    </div>
+    <div>
+        <%= image_tag("watch2.jpg", :class => "autoplay") %>
+    </div>
+    <div>
+        <%= image_tag("watch3.jpg", :class => "autoplay") %>
+    </div>
+    <div>
+        <%= image_tag("watch4.jpg", :class => "autoplay") %>
+    </div>
+    <div>
+        <%= image_tag("watch5.jpg", :class => "autoplay") %>
+    </div>
+    <div>
+        <%= image_tag("watch6.jpg", :class => "autoplay") %>
+    </div>
 </div>
 
 <% @products.each do |prod| %>
 
 <div class="case1">
-  <p><%= prod.brand.brand_name %></p>
-  <p><%= link_to image_tag(prod.image, :class => "prod1"), product_path(prod) %></p>
-  <p><%= link_to(prod.product_name, product_path(prod)) %></p>
-  <p>Price  <%= number_to_currency(prod.price) %></p>
-  <p class="case3">Product Code  <%= prod.id %></p>
+    <p><%= prod.brand.brand_name %></p>
+    <p><%= link_to image_tag(prod.image, :class => "prod1"), product_path(prod) %></p>
+    <p><%= link_to(prod.product_name, product_path(prod)) %></p>
+    <p>Price
+        <%= number_to_currency(prod.price) %></p>
+    <p class="case3">Product Code
+        <%= prod.id %></p>
 
-  <% unless @current_user %>
+    <% unless @current_user %>
     <% unless @current_cart.products.include?(prod) %>
-      <%= button_to "Add to cart", items_path(:product_id => prod.id) %>
-    <% else %>
-      <%= button_to "Add another", items_path(:product_id => prod.id) %>
+    <%= button_to "Add to cart", items_path(:product_id => prod.id) %>
+<% else %>
+    <%= button_to "Add another", items_path(:product_id => prod.id) %>
     <% end %>
-  <% else %>
+<% else %>
     <%= button_to "Admin Edit", edit_product_path(prod), method: :get %>
-  <% end %>
+    <% end %>
 
-  </div>
+</div>
 <% end %>
 
 <div class="case3">
-  <br>
- <%= will_paginate @products %>
+    <br>
+    <%= will_paginate @products %>
 </div>

@@ -1,11 +1,20 @@
 <h1>Your receipt is below:</h1>
-<p>Your email:<%= @customer %> </p>
-<p>Your address: <%= @address %> </p>
+<p>Your email:<%= @customer %>
+</p>
+<p>Your address:
+    <%= @address %>
+</p>
 <br>
 <hr>
 <p>Item list:</p>
 <ul>
-  <% @items.each do |item| %>
-    <li>Brand: <%=item.product.brand.brand_name %> | Item: <%= item.product.product_name %> | Quantity: <%= item.quantity %> | Cost: $<%= item.product.price * item.quantity%></li>
-  <% end %>
+    <% @items.each do |item| %>
+    <li>Brand:
+        <%=item.product.brand.brand_name %>
+        | Item:
+        <%= item.product.product_name %>
+        | Quantity:
+        <%= item.quantity %>
+        | Cost: $<%= item.product.price * item.quantity%></li>
+    <% end %>
 </ul>

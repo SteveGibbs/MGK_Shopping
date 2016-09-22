@@ -1,50 +1,58 @@
 <h1>Your Order</h1>
 
-
 <h3>Item summary</h3>
 
 <% @order.items.each do |item| %>
-  <ul>
-    <li>Product: <%= item.product.product_name %></li>
-    <li>Price: <%= number_to_currency(item.product.price) %></li>
-    <li>Quantity: <%= item.quantity %></li>
-  </ul>
+<ul>
+    <li>Product:
+        <%= item.product.product_name %></li>
+    <li>Price:
+        <%= number_to_currency(item.product.price) %></li>
+    <li>Quantity:
+        <%= item.quantity %></li>
+</ul>
 <% end %>
 
-<p><strong>Subtotal: <%= number_to_currency(@cart.subtotal) %></strong></p>
-<p>Plus tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></p>
-<p>Plus shipping: <%= number_to_currency(@cart.shipping) %></p>
-<p><strong>Total: <%= number_to_currency(@cart.total) %></strong></p>
+<p>
+    <strong>Subtotal:
+        <%= number_to_currency(@cart.subtotal) %></strong>
+</p>
+<p>Plus tax (10%):
+    <%= number_to_currency(@cart.tax * @cart.subtotal) %></p>
+<p>Plus shipping:
+    <%= number_to_currency(@cart.shipping) %></p>
+<p>
+    <strong>Total:
+        <%= number_to_currency(@cart.total) %></strong>
+</p>
 
 <hr>
 
 <h3>Shipping details</h3>
 
-<p>Name: <%= @order.name %></p>
-<p>Address: <%= @order.address1 %></p>
-<p>Status: <%= @order.status %></p>
+<p>Name:
+    <%= @order.name %></p>
+<p>Address:
+    <%= @order.address1 %></p>
+<p>Status:
+    <%= @order.status %></p>
 
 <% if @order.status == "Paid" || @order.status == "Shipped" %>
-  <h3>You have paid</h3>
+<h3>You have paid</h3>
 <% else %>
-  <%= form_tag charges_path do %>
-    <article>
-      <% if flash[:error].present? %>
-        <div id="error_explanation">
-          <p><%= flash[:error] %></p>
-        </div>
-      <% end %>
-      <label class="amount">
-        <span>Amount: <%= number_to_currency(@total_amount_to_be_paid) %></span>
-      </label>
-    </article>
+<%= form_tag charges_path do %>
+<article>
+    <% if flash[:error].present? %>
+    <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+    </div>
+    <% end %>
+    <label class="amount">
+        <span>Amount:
+            <%= number_to_currency(@total_amount_to_be_paid) %></span>
+    </label>
+</article>
 
-
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="A month's subscription"
-            data-amount="<%= @total_amount_to_be_paid*100 %>"
-            data-locale="auto">
-    </script>
-  <% end %>
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="<%= @total_amount_to_be_paid*100 %>" data-locale="auto"></script>
+<% end %>
 <% end %>

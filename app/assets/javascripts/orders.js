@@ -5,10 +5,6 @@ var orderDisplay = function(data) {
   // An array of objects
   $(".clear_display").empty();
 
-  // for (var i = 0; i< data.length; i++ ){
-  //   var OrderID2 = data[i].items[0].order_id;
-  //   $()
-  // }
 
   for (var i = 0; i < data.length; i++) {
     var name = data[i].name;
@@ -31,7 +27,7 @@ var orderDisplay = function(data) {
       var price = data[i].items[j].product.price;
       var quantity = data[i].items[j].quantity;
       var orderID = data[i].items[j].order_id;
-      var total = quantity * price; //hack for display -  may select multiple items - to be revisited
+      var total = quantity * price;
       var $li4 = $("<li>").text("Purchased " + quantity + " of " + productName + " items @ price of $" + price + " for $" + total);
       $(".clear_display").append($li4);
 
@@ -49,24 +45,18 @@ var getOrderDisplay = function() {
     type: "GET",
     dataType: "JSON"
   }).done(orderDisplay);
-  //  window.setInterval(function(){
-  //    getOrderDisplay();
-  //  }, 15000);
-
-
 };
 
 $(document).on("turbolinks:load", function() {
 
   var myTimer;
   var orderTimer = function() {
-    myTimer = window.setInterval(function(){
+    myTimer = window.setInterval(function() {
       getOrderDisplay();
-    },4000);
+    }, 4000);
   };
-getOrderDisplay();
+  getOrderDisplay();
   $("#order_display").on("click", orderTimer);
-  // $("#order_display").on("click", getOrderDisplay);
   $("#stop_live_orders").on("click", function() {
     console.log("testing once again");
     window.clearInterval(myTimer);
@@ -74,14 +64,3 @@ getOrderDisplay();
   });
 
 });
-//
-// $(document).ready(function(){
-// getChuckQuotes();
-// chuckTimer = window.setInterval(function(){
-//   getChuckQuotes();
-// }, 1000);
-// $chuckStopButton.on("click", function(){
-//   window.clearInterval(chuckTimer);
-// });
-//
-// });

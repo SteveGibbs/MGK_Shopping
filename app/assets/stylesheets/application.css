@@ -174,7 +174,6 @@ html, body {
 
 .supplier_logo {
   height: 30px;
-
 }
 label {
   margin-left: 50px;
@@ -182,65 +181,54 @@ label {
   font-size: 14px;
   display: inline-block;
 }
-
-
 #MGK {
-   font-size: 25px;
+  font-size: 25px;
 }
-
 nav {
-   background-color: black;
-   color: white;
-   width: 100%;
+  background-color: black;
+  color: white;
+  width: 100%;
 }
-
-nav a{
-   color: white;
-   text-decoration: none;
+nav a {
+  color: white;
+  text-decoration: none;
 }
-
 button {
-   border-radius: 2px;
-   margin: 2px;
-   background-color: darkslategray;
-   color: white;
-   margin: 0.3em 0;
+  border-radius: 2px;
+  margin: 2px;
+  background-color: darkslategray;
+  color: white;
+  margin: 0.3em 0;
 }
-
 input {
-   border-radius: 2px;
-   margin: 2px;
-   background-color: darkslategray;
-   color: white;
-   margin: 0.3em 0;
+  border-radius: 2px;
+  margin: 2px;
+  background-color: darkslategray;
+  color: white;
+  margin: 0.3em 0;
 }
-
 input#product_product_name, input#product_price, input#product_image, input#order_name, input#order_address1, input#email, input#password {
-  /*background-color: yellow;*/
   width: 400px;
   border: 0.5px solid lightslategray;
   border-radius: 10px;
   padding: 10px;
   font-size: 12px;
 }
-
 textarea {
-   width: 400px;
-   border: 0.5px solid lightslategray;
-   border-radius: 10px;
-   padding: 10px;
-   font-size: 12px;
+  width: 400px;
+  border: 0.5px solid lightslategray;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 12px;
 }
-
 select {
-   width: 400px;
-   border: 0.5px solid lightslategray;
-   border-radius: 10px;
-   padding: 10px;
-   font-size: 12px;
-   background-color: white;
+  width: 400px;
+  border: 0.5px solid lightslategray;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 12px;
+  background-color: white;
 }
-
 p, li {
   font-size: 14px;
   color: #5a5859;
@@ -266,12 +254,10 @@ a {
 a:hover {
   color: #e3a797;
 }
-
 .slick-slide {
   width: 185px;
   max-width: 75%;
 }
-
 
 /*.slick-prev:after {
   content: ">";

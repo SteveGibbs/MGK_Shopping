@@ -1,8 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    # @products = Product.all
-     @products = Product.all.paginate(:page => params[:page], :per_page => 5)
-    # @cart = @current_cart #Samit testing
+    @products = Product.all.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -26,7 +24,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-
   end
 
   def destroy
@@ -36,6 +33,7 @@ class ProductsController < ApplicationController
   end
 
   private
+
   def product_params
     params.require(:product).permit(:product_name, :product_desc1, :product_desc2, :price, :active, :image, :brand_id)
   end

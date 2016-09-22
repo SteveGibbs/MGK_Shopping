@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    # We watn to pass in all the cart items to the order model
+    # We want to pass in all the cart items to the order model
     @current_cart.items.each do |item|
       @order.items << item
       # item.cart_id = nil
@@ -14,9 +14,7 @@ class OrdersController < ApplicationController
 
     @order.save
     # Store the order id in a session
-    if @order.save
-      session[:order_id] = @order.id
-    end
+    session[:order_id] = @order.id if @order.save
     # Cart.destroy(session[:cart_id])
     # session[:cart_id] = nil
 
@@ -27,7 +25,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
     respond_to do |f|
       f.html {}
-      f.json { render :json => @orders.to_json(:include => {:items => {:include => :product } } )}
+      f.json { render json: @orders.to_json(include: { items: { include: :product } }) }
     end
   end
 
@@ -55,7 +53,8 @@ class OrdersController < ApplicationController
   end
 
   private
-    def order_params
-      params.require(:order).permit(:name, :address1, :status)
-    end
+
+  def order_params
+    params.require(:order).permit(:name, :address1, :status)
+  end
 end
