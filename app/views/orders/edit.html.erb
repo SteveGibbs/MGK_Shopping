@@ -1,23 +1,49 @@
 <h1>Edit Order </h1>
-<p>Find me in app/views/orders/edit.html.erb</p>
 
 
 <%= form_for(@order) do |f| %>
+  <div class="row">
   <p>
-    <%= f.label "Email" %> <br>
-    <%= f.email_field :name, :required => true, :autofocus => true %>
-  </p>
-  <p>
-    <%= f.label "Address" %> <br>
-    <%= f.text_field :address1 %>
-  </p>
-  <p>
-    <%= f.label "Status" %> <br>
-    <%= f.select :status,["in progress","Paid","Shipped"] %>
+    <div class="col-2 left">
+      <span>Email</span>
+    </div>
+    <div class="col-10 left">
+      <%= f.email_field :name, :required => true, :autofocus => true %>
+    </div>
+  </div>
   </p>
 
+
   <p>
-    <%= f.submit %>
+    <div class="row">
+      <div class="col-2 left">
+        <span>Address</span>
+      </div>
+      <div class="col-10 left">
+        <%= f.text_field :address1 %>
+      </div>
+    </div>
+  </p>
+
+
+  <p>
+    <div class="row">
+      <div class="col-2 left">
+        <span>Status</span>
+      </div>
+      <div class="col-10 left">
+        <%= f.select :status,["in progress","Paid","Shipped"] %>
+      </div>
+    </div>
+  </p>
+
+
+  <p>
+    <div class="row">
+      <div class="col-2 left">
+        <%= f.submit %>
+      </div>
+    </div>
   </p>
 <% end %>
 

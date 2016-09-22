@@ -1,57 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MgkShoppingApp</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  </head>
-  <body>
+    <head>
+        <title>MgkShoppingApp</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
 
-    <div class="container">
+        <nav>
+            <div class="navcontainer">
+                <div class="row">
+                    <div class="col-10 left">
+                    <!-- Admin view -->
+                    <% unless @current_user %>
+                        <%= link_to("Admin login", login_path) %>
+                    <% else %>
+                        <%= link_to("New Product", new_product_path) %> <span>&nbsp; &nbsp;</span>
+                        <%= link_to("All Orders", orders_path) %> <span>&nbsp; &nbsp;</span>
+                        <%= link_to("Competitors", competitor_path) %> <span>&nbsp; &nbsp;</span>
+                    <% end %>
+                    <!-- Admin view -->
+                    </div>
 
-      <nav>
-        <%= link_to("All products", products_path) %>
-        <br>
+                    <div class="col-2 right">
+                        <% if @current_user %>
+                            <span>Logged in as:
+                            <%= @current_user.first_name %>
+                            (<%= link_to "Logout", logout_path, method: :delete %>)</span>
+                        <% end %>
+                    </div>
+                </div>
 
-        <!-- Admin view -->
-        <% unless @current_user %>
-        <%= link_to("Admin login", login_path) %>
-      <% else %>
-        <%= link_to("New Product", new_product_path) %>
-        |
-        <%= link_to("All Orders", orders_path) %>
-        |
-        <%= link_to("Competitors", competitor_path) %>
-        <% end %>
-        <!-- Admin view -->
+                <div class="row">
+                    <div class="col-12 center">
+                        <span id="MGK">MGK Watches</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 center">
+                        <span id="location">SYD  |  LON  |  NYC</span>
+                    </div>
+                </div>
 
-        <% unless @current_user %>
-        <% if @current_order %>
-        <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
-        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-      <% else %>
-        <%= link_to("Cart: #{@current_cart.total_quantity}",cart_path(@current_cart)) %>
+                <div class="row">
+                    <div class="col-2 left">
+                        <%= link_to("All products", products_path) %>
+                    </div>
 
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        <%=  %>
-        <% end %>
-        <% end %>
+                    <div class="col-10 right">
+                        <% unless @current_user %>
+                            <% if @current_order %>
+                                <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
+                                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                            <% else %>
+                                <%= link_to("Cart: #{@current_cart.total_quantity}",cart_path(@current_cart)) %>
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <%=  %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
 
-        <% if @current_user %>
-        <p>Logged :
-          <%= @current_user.first_name %>
-          (<%= link_to "Logout", logout_path, method: :delete %>)</p>
-        <% end %>
+        </nav>
 
-      </nav>
 
-      <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-      <%= yield %>
+        <div class="container">
+            <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+            <%= yield %>
+        </div>
 
-    </div>
-  </body>
+    </body>
 </html>

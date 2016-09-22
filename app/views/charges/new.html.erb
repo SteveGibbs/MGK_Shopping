@@ -6,18 +6,33 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <label class="amount">
-      <span>Amount: <%= @total_amount_to_be_paid %></span>
-    </label>
+
+  <br>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <%= image_tag("https://www.rosefieldwatches.com/media/catalog/category/Watches.jpg") %>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <label class="amount">
+      <!-- <span>Amount: <%= @total_amount_to_be_paid %></span> -->
+  </label>
   </article>
 
-
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="PAY BELOW"
-          data-amount="<%= @total_amount_to_be_paid*100 %>"
-          data-locale="auto">
-  </script>
-
+  <hr>
+  <br>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4 center">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="PAY BELOW"
+            data-amount="<%= @total_amount_to_be_paid*100 %>"
+            data-locale="auto">
+    </script>
+    </div>
+    <div class="col-4"></div>
+  </div>
 <% end %>

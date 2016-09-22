@@ -1,13 +1,32 @@
 <%= form_for(@order) do |f| %>
-  <p>
-    <%= f.label "Email" %> <br>
-    <%= f.email_field :name, :required => true, :autofocus => true %>
-  </p>
-  <p>
-    <%= f.label "Address" %> <br>
-    <%= f.text_field :address1 %>
-  </p>
-  <p>
+
+<div class="row">
+    <p>
+        <div class="col-2 left">
+            <span>Email</span>
+        </div>
+        <div class="col-10 left">
+            <%= f.email_field :name, :required => true, :autofocus => true %>
+        </div>
+    </p>
+</div>
+
+<br>
+<div class="row">
+    <p>
+        <div class="col-2 left">
+        <span>Address</span>
+        </div>
+        <div class="col-10 left">
+        <%= f.text_field :address1 %>
+        </div>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-2">
     <%= f.submit %>
-  </p>
+    </div>
+</div>
+
 <% end %>

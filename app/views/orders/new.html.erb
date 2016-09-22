@@ -1,4 +1,5 @@
 <h1>Orders checkout</h1>
+<hr>
 
 <h3>Cart items confirmation</h3>
 
@@ -10,10 +11,10 @@
   </ul>
 <% end %>
 
-<h3>Subtotal: <%= number_to_currency(@cart.subtotal) %></h3>
-<h3>Tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></h3>
-<h3>Shipping: <%= number_to_currency(@cart.shipping) %></h3>
-<h3>Total: <%= number_to_currency(@cart.total) %></h3>
+<h4>Subtotal: <%= number_to_currency(@cart.subtotal) %></h4>
+<h4>Tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></h4>
+<h4>Shipping: <%= number_to_currency(@cart.shipping) %></h4>
+<h3>TOTAL: <%= number_to_currency(@cart.total) %></h3>
 
 <hr>
 

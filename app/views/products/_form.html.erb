@@ -1,32 +1,68 @@
 <%= form_for @product do |f| %>
 
+<div class="row">
 <p>
-  <%= f.label :product_name %>
+  <div class="col-3 left">
+  <span>Product name</span>
+  </div>
+  <div class="col-9 left">
   <%= f.text_field :product_name, :required => true %>
+  </div>
 </p>
-<br>
+</div>
 
+
+<div class="row">
 <p>
-  <%= f.label :product_desc1 %>
+  <div class="col-3 left">
+    <span>Product description</span>
+  </div>
+  <div class="col-9 left">
   <%= f.text_area :product_desc1, :required => true %>
+  </div>
 </p>
-<br>
+</div>
 
+
+<div class="row">
 <p>
-  <%= f.label :price %>
+  <div class="col-3 left">
+    <span>Price</span>
+  </div>
+  <div class="col-9 left">
   <%= f.number_field :price, :required => true %>
+  </div>
 </p>
-<br>
+</div>
 
+
+<div class="row">
 <p>
-  <%= f.label :image %>
+  <div class="col-3 left">
+    <span>Image</span>
+  </div>
+  <div class="col-9 left">
   <%= f.text_field :image %>
+  </div>
 </p>
+</div>
+
+<div class="row">
+<p>
+  <div class="col-3 left">
+    <span>Brand</span>
+  </div>
+  <div class="col-9 left">
+  <%= f.collection_select :brand_id, Brand.all, :id, :brand_name %>
+  </div>
+</p>
+</div>
 <br>
 
-<p>
-  <%= f.label :brand %>
-  <%= f.collection_select :brand_id, Brand.all, :id, :brand_name %>
-</p>
+<div class="row">
+<div class="col-3">
 <%= f.submit "Submit", :class=> "submit_format" %>
+</div>
+
+</div>
 <% end %>

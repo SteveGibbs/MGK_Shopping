@@ -1,6 +1,7 @@
 <h1>Shopping Cart</h1>
 
-<p>Cart id: <%= @cart.id %></p>
+<p>Cart ID: <%= @cart.id %></p>
+<hr>
 
 <% if @cart.items.length > 0  %>
   <% @cart.items.each do |item| %>
@@ -8,9 +9,9 @@
       <li>Product: <%= item.product.product_name %></li>
       <li>Price: <%= number_to_currency(item.product.price) %></li>
       <li>Quantity: <%= item.quantity %></li>
-      <li>product_id: <%= item.product_id %></li>
-      <li>cart_id: <%= item.cart_id %></li>
-      <li>order_id: <%= item.order_id %></li>
+      <li>Product ID: <%= item.product_id %></li>
+      <li>Cart ID: <%= item.cart_id %></li>
+      <li>Order ID: <%= item.order_id %></li>
       <ul>
         <li><%= link_to "Add one", item_add_path(:id => item), method: :post %></li>
         <li><%= link_to "Reduce one", item_reduce_path(:id => item), method: :post %></li>
@@ -19,11 +20,11 @@
   </ul>
   <% end %>
 
-
+  <hr>
   <p><strong>Subtotal: <%= number_to_currency(@cart.subtotal) %></strong></p>
   <p>Plus tax (10%): <%= number_to_currency(@cart.tax * @cart.subtotal) %></p>
   <p>Plus shipping: <%= number_to_currency(@cart.shipping) %></p>
-  <p><strong>Total: <%= number_to_currency(@cart.total) %></strong></p>
+  <p><strong>TOTAL: <%= number_to_currency(@cart.total) %></strong></p>
 
   <br>
 

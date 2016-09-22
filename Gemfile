@@ -53,7 +53,7 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'httparty'
-  gem 'nokogiri'  
+  gem 'nokogiri'
 end
 
 ## Gemfile for Rails 3+, Sinatra, and Merb

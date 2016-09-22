@@ -3,10 +3,29 @@
 <fieldset>
   <legend>Enter login details</legend>
     <%= form_tag login_path do %>
-      <%= label_tag :email %>
-      <%= email_field_tag :email, '', required: true %>
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-      <%= submit_tag 'Login' %>
+
+    <div class="row">
+      <div class="col-2 left">
+        <span>Email</span>
+      </div>
+      <div class="col-10 left">
+        <%= email_field_tag :email, '', required: true %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 left">
+        <span>Password</span>
+      </div>
+      <div class="col-10 left">
+        <%= password_field_tag :password %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 left">
+        <%= submit_tag 'Login' %>
+      </div>
+    </div>
     <% end %>
 </fieldset>
