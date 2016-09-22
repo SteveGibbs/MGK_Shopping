@@ -259,7 +259,9 @@ a:hover {
   width: 185px;
   max-width: 75%;
 }
-
+.single-item-rtl{
+  max-width: 85%;
+}
 /*.slick-prev:after {
   content: ">";
   color: white;

@@ -17,7 +17,7 @@ var orderDisplay = function(data) {
     var $li = $("<li>").text("Name: " + name);
     var $li2 = $("<li>").text("Address: " + address1);
     var $li3 = $("<li>").text("Status: " + status);
-    $(".clear_display").append($li8).append($li5).append($li2).append($li3).append($li5);
+    $(".clear_display").append($li8).append($li).append($li5).append($li2).append($li3).append($li5);
     var URL = "/orders/" + orderID2 + "/edit";
     var editOrder = $('<a href="' + URL + '">' + 'edit order' + '</a>');
     $(".clear_display").append(editOrder);
