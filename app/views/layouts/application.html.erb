@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    </html>
+<html>
 
     <head>
         <title>MgkShoppingApp</title>
@@ -11,98 +11,110 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     </head>
     <body>
-        <header>
-            <div class="row">
-                <div class="col-12-sm center">
-                    <h1>
-                        <i class="fa fa-stop-circle" aria-hidden="true"></i>
-                        MGK SYDNEY</h1>
-                </div>
-            </div>
 
-            <div class="row">
-                <nav>
-                    <%= link_to("Browse", products_path) %>
+        <nav>
+            <div class="navcontainer">
+                <div class="row">
+                    <div class="col-10 left">
+                        <!-- Admin view -->
+                        <% unless @current_user %>
+                        <%= link_to("Admin login", login_path) %>
+                    <% else %>
+                        <%= link_to("New Product", new_product_path) %>
+                        <span>&nbsp; &nbsp;</span>
+                        <%= link_to("All Orders", orders_path) %>
+                        <span>&nbsp; &nbsp;</span>
+                        <%= link_to("Competitors", competitor_path) %>
+                        <span>&nbsp; &nbsp;</span>
+                        <% end %>
+                        <!-- Admin view -->
+                    </div>
 
-                    <!-- Admin view -->
-                    <% if @current_user %>
-                    <br>
-                    <%= link_to("New Product", new_product_path) %>
-                    |
-                    <%= link_to("All Orders", orders_path) %>
-                    |
-                    <%= link_to("Competitors", competitor_path) %>
-                    <% end %>
-                    <!-- Admin view -->
-                    <br>
-
-                    <% unless @current_user %>
-                    <% if @current_order %>
-                    <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
-                    <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-                <% else %>
-                    <%= link_to("Cart: #{@current_cart.total_quantity}",cart_path(@current_cart)) %>
-
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    <%=  %>
-                    <% end %>
-                    <% end %>
-
-                    <% if @current_user %>
-                    <p>Logged in :
-                        <%= @current_user.first_name %>
-                        (<%= link_to "Logout", logout_path, method: :delete %>)</p>
-                    <% end %>
-                </nav>
-            </div>
-        </header>
-
-        <div class="container">
-            <%= yield %>
-        </div>
-
-        <footer>
-
-            <div class="row">
-                <div class="col-6">
-                    <h4>About Us</h4>
-                    <small>MGK watches are created for free-spirited individuals. MGK makes fashion-forward watches where classic meets modern. Where function meets form. Where Amsterdam meets New York.</small>
-
-                    <% if @current_user %>
-                    <p>Logged in :
-                        <%= @current_user.first_name %>
-                        (<%= link_to "Logout", logout_path, method: :delete %>)</p>
-                <% else %>
-                    <p><%= link_to("Admin login", login_path) %></p>
-                    <% end %>
-
-                </div>
-                <div class="col-6">
-                    <h4>Project Summary</h4>
-                    <p>Group project as part of General Assembly's Web Development Immersive bootcamp. Project inspiration from e-commerce watch store
-                        <a href="https://www.rosefieldwatches.com/" target="_blank">Rosefields</a>.
-
-                        <p>Built by project team in four days. Find our other work on github:</p>
-                        <ul class="fa-ul">
-                            <li>
-                                <i class="fa fa-github-alt" aria-hidden="true"></i>
-                                <a href="https://github.com/SteveGibbs" target="_blank">Steve Gibbs</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-github-alt" aria-hidden="true"></i>
-                                <a href="https://github.com/skal9606" target="_blank">Samit Kalra</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-github-alt" aria-hidden="true"></i>
-                                <a href="https://github.com/howardmann" target="_blank">Howie_Burger</a>
-                            </li>
-                        </ul>
-
+                    <div class="col-2 right">
+                        <% if @current_user %>
+                        <span>Logged in as:
+                            <%= @current_user.first_name %>
+                            (<%= link_to "Logout", logout_path, method: :delete %>)</span>
+                        <% end %>
                     </div>
                 </div>
-            </footer>
 
-            <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+                <div class="row">
+                    <div class="col-12 center">
+                        <span id="MGK">MGK Watches</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 center">
+                        <span id="location">SYD | LON | NYC</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2 left">
+                        <%= link_to("All products", products_path) %>
+                    </div>
+
+                    <div class="col-10 right">
+                        <% unless @current_user %>
+                        <% if @current_order %>
+                        <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
+                        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                    <% else %>
+                        <%= link_to("Cart: #{@current_cart.total_quantity}",cart_path(@current_cart)) %>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <%=  %>
+                        <% end %>
+                        <% end %>
+                    </div>
+                </div>
+
+            </nav>
+
+            <div class="container">
+                <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+                <%= yield %>
+            </div>
+
+                    <footer>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <h4>About Us</h4>
+                                <small>MGK watches are created for free-spirited individuals. MGK makes fashion-forward watches where classic meets modern. Where function meets form. Where Amsterdam meets New York.</small>
+
+                                <% if @current_user %>
+                                <p>Logged in :
+                                    <%= @current_user.first_name %>
+                                    (<%= link_to "Logout", logout_path, method: :delete %>)</p>
+                            <% else %>
+                                <p><%= link_to("Admin login", login_path) %></p>
+                                <% end %>
+
+                            </div>
+                            <div class="col-6">
+                                <h4>Project Summary</h4>
+                                <p>Group project as part of General Assembly's Web Development Immersive bootcamp. Project inspiration from e-commerce watch store
+                                    <a href="https://www.rosefieldwatches.com/" target="_blank">Rosefields</a>.
+
+                                    <p>Built by project team in four days. Find our other work on github:</p>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-github-alt" aria-hidden="true"></i>
+                                            <a href="https://github.com/SteveGibbs" target="_blank">Steve Gibbs</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-github-alt" aria-hidden="true"></i>
+                                            <a href="https://github.com/skal9606" target="_blank">Samit Kalra</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-github-alt" aria-hidden="true"></i>
+                                            <a href="https://github.com/howardmann" target="_blank">Howie_Burger</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </footer>
         </body>
-
     </html>
