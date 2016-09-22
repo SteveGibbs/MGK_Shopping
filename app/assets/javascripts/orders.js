@@ -32,9 +32,9 @@ var orderDisplay = function(data) {
       var quantity = data[i].items[j].quantity;
       var orderID = data[i].items[j].order_id;
       var total = quantity * price; //hack for display -  may select multiple items - to be revisited
-      var $li4 = $("<li>").text("Purchased " + quantity + " of " + productName + " items @ price of $" + price + " for $ " + total + " on order_id " + orderID);
+      var $li4 = $("<li>").text("Purchased " + quantity + " of " + productName + " items @ price of $" + price + " for $" + total);
       $(".clear_display").append($li4);
-    
+
     }
   }
 };
