@@ -201,7 +201,7 @@ nav a{
 
 button {
    border-radius: 2px;
-   margin 2px;
+   margin: 2px;
    background-color: darkslategray;
    color: white;
    margin: 0.3em 0;
@@ -209,7 +209,7 @@ button {
 
 input {
    border-radius: 2px;
-   margin 2px;
+   margin: 2px;
    background-color: darkslategray;
    color: white;
    margin: 0.3em 0;
