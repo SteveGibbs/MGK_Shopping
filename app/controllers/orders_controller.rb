@@ -41,6 +41,13 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    @order.save
+    redirect_to orders_path
+  end
+
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
