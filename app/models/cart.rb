@@ -17,4 +17,12 @@ class Cart < ActiveRecord::Base
     self.subtotal + (self.subtotal * self.tax) + self.shipping
   end
 
+  def total_quantity
+    sum = 0
+    self.items.each do |item|
+      sum+= item.quantity
+    end
+    return sum
+  end
+
 end

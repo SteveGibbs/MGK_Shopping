@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
   before_action :fetch_user
   before_action :fetch_order
 
-
+  def order_quantity
+    @current_order.items.each do |item|
+      @sum = 0
+    order_quantity =  item.quantity
+    @sum += item.quantity
+  end
+end
   private
     # Create new empty cart when new user visits
     def current_cart

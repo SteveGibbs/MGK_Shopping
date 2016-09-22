@@ -25,10 +25,11 @@
 
     <% unless @current_user %>
       <% if @current_order %>
-        <%= link_to("Current order: #{@current_order.id}", order_path(@current_order)) %>
+        <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
         <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
       <% else %>
-        <%= link_to("Cart: #{@current_cart.id}",cart_path(@current_cart)) %>
+        <%= link_to("Cart: #{@current_cart.total_quantity}",cart_path(@current_cart)) %>
+
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         <%=  %>
       <% end %>
@@ -38,7 +39,9 @@
       <p>Logged : <%= @current_user.first_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</p>
     <% end %>
 
-<%= @quantity %>
+
+
+
   </nav>
 
 
