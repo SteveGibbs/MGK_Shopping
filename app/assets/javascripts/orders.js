@@ -5,6 +5,11 @@ var orderDisplay = function(data) {
   // An array of objects
   $(".clear_display").empty();
 
+  // for (var i = 0; i< data.length; i++ ){
+  //   var OrderID2 = data[i].items[0].order_id;
+  //   $()
+  // }
+
   for (var i = 0; i < data.length; i++) {
     var name = data[i].name;
     var address1 = data[i].address1;
@@ -53,9 +58,9 @@ $(document).on("turbolinks:load", function() {
   var orderTimer = function() {
     myTimer = window.setInterval(function(){
       getOrderDisplay();
-    },12000);
+    },4000);
   };
-
+getOrderDisplay();
   $("#order_display").on("click", orderTimer);
   // $("#order_display").on("click", getOrderDisplay);
   $("#stop_live_orders").on("click", function() {
