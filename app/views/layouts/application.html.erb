@@ -6,6 +6,7 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -15,22 +16,22 @@
         <nav>
             <div class="navcontainer">
                 <div class="row">
-                    <div class="col-10 left">
+                    <div class="col-10-sm left">
                         <!-- Admin view -->
                         <% unless @current_user %>
-                        <%= link_to("Admin login", login_path) %>
-                    <% else %>
-                        <%= link_to("New Product", new_product_path) %>
-                        <span>&nbsp; &nbsp;</span>
-                        <%= link_to("All Orders", orders_path) %>
-                        <span>&nbsp; &nbsp;</span>
-                        <%= link_to("Competitors", competitor_path) %>
-                        <span>&nbsp; &nbsp;</span>
+                          <%= link_to("Admin login", login_path) %>
+                        <% else %>
+                          <%= link_to("New Product", new_product_path) %>
+                          <span>&nbsp; &nbsp;</span>
+                          <%= link_to("All Orders", orders_path) %>
+                          <span>&nbsp; &nbsp;</span>
+                          <%= link_to("Competitors", competitor_path) %>
+                          <span>&nbsp; &nbsp;</span>
                         <% end %>
                         <!-- Admin view -->
                     </div>
 
-                    <div class="col-2 right">
+                    <div class="col-2-sm right">
                         <% if @current_user %>
                         <span>Logged in as:
                             <%= @current_user.first_name %>
@@ -51,20 +52,20 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-2 left">
-                        <%= link_to("All products", products_path) %>
+                    <div class="col-2-sm left">
+                        <%= link_to("Browse", products_path) %>
                     </div>
 
-                    <div class="col-10 right">
+                    <div class="col-10-sm right">
                         <% unless @current_user %>
-                        <% if @current_order %>
-                        <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
-                        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-                    <% else %>
-                        <%= link_to("Cart: #{@current_cart.total_quantity}",cart_path(@current_cart)) %>
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <%=  %>
-                        <% end %>
+                          <% if @current_order %>
+                            <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
+                            <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                            <% else %>
+                            <%= link_to("Cart: #{@current_cart.total_quantity}",cart_path(@current_cart)) %>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <%=  %>
+                          <% end %>
                         <% end %>
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <h4>About Us</h4>
-                                <small>MGK watches are created for free-spirited individuals. MGK makes fashion-forward watches where classic meets modern. Where function meets form. Where Amsterdam meets New York.</small>
+                                <small>MGK watches are created for free-spirited individuals. MGK makes fashion-forward watches where classic meets modern. Where function meets form. Where a bunch of GA students get bored.</small>
 
                                 <% if @current_user %>
                                 <p>Logged in :
