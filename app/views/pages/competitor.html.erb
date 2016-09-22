@@ -1,32 +1,47 @@
-<h1>Web scraping competitor live pricing</h1>
-
-<h2>Male watches</h2>
+<h1 class="center">Competitor Monitor</h1>
 
 <div class="row">
-<% @getprice[:male].each do |item| %>
-  <div class="col-4">
-    <p><%= image_tag(item[:image]) %></p>
-    <p><%= item[:name] %></p>
-    <p><%= item[:price] %></p>
-    <p><%= image_tag(item[:supplier], :class => "supplier_logo") %></p>
-    <a href="<%= item[:gotoshop] %>" target="_blank">Go to shop</a>
+
+  <div class="col-5 center">
+    <h2>Male watches</h2>
+
+    <div class="row">
+      <% @getprice[:male].each do |item| %>
+      <div class="row">
+        <div class="col-8 center">
+          <p><%= image_tag(item[:image]) %></p>
+        </div>
+        <div class="col-4 center">
+          <p><%= item[:name] %></p>
+          <p><%= item[:price] %></p>
+          <a href="<%= item[:gotoshop] %>" target="_blank"><%= image_tag(item[:supplier], :class => "supplier_logo") %></a>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+
+  <div class="col-2"></div>
+
+  <div class="col-5 center">
+    <h2>Female watches</h2>
+
+    <div class="row">
+      <% @getprice[:female].each do |item| %>
+      <div class="row">
+        <div class="col-8 center">
+          <p><%= image_tag(item[:image]) %></p>
+        </div>
+        <div class="col-4 center">
+          <p><%= item[:name] %></p>
+          <p><%= item[:price] %></p>
+          <a href="<%= item[:gotoshop] %>" target="_blank"><%= image_tag(item[:supplier], :class => "supplier_logo") %></a>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
 
 </div>
-
-<h2>Female watches</h2>
-
-<div class="row">
-<% @getprice[:female].each do |item| %>
-  <div class="col-4">
-  <p><%= image_tag(item[:image]) %></p>
-  <p><%= item[:name] %></p>
-  <p><%= item[:price] %></p>
-  <p><%= image_tag(item[:supplier], :class => "supplier_logo") %></p>
-  <a href="<%= item[:gotoshop] %>" target="_blank">Go to shop</a>
-  </div>
-<% end %>
-</div>
-
-<%#= will_paginate @getprice %>
