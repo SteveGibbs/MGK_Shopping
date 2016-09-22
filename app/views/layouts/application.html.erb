@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MgkShoppingApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-</head>
-<body>
-  <nav>
-    <%= link_to("All products", products_path) %>
-    <br>
+  <head>
+    <title>MgkShoppingApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  </head>
+  <body>
 
-    <!-- Admin view -->
-    <% unless @current_user %>
-      <%= link_to("Admin login", login_path) %>
-    <% else %>
-      <%= link_to("New Product", new_product_path) %> |
-      <%= link_to("All Orders", orders_path) %> |
-      <%= link_to("Competitors", competitor_path) %>
-    <% end %> <!-- Admin view -->
+    <div class="container">
 
-    <% unless @current_user %>
-      <% if @current_order %>
+      <nav>
+        <%= link_to("All products", products_path) %>
+        <br>
+
+        <!-- Admin view -->
+        <% unless @current_user %>
+        <%= link_to("Admin login", login_path) %>
+      <% else %>
+        <%= link_to("New Product", new_product_path) %>
+        |
+        <%= link_to("All Orders", orders_path) %>
+        |
+        <%= link_to("Competitors", competitor_path) %>
+        <% end %>
+        <!-- Admin view -->
+
+        <% unless @current_user %>
+        <% if @current_order %>
         <%= link_to("Current order: #{@current_order.status}", order_path(@current_order)) %>
         <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
       <% else %>
@@ -32,21 +38,20 @@
 
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         <%=  %>
-      <% end %>
-    <% end %>
+        <% end %>
+        <% end %>
 
-    <% if @current_user %>
-      <p>Logged : <%= @current_user.first_name %> (<%= link_to "Logout", logout_path, method: :delete %>)</p>
-    <% end %>
+        <% if @current_user %>
+        <p>Logged :
+          <%= @current_user.first_name %>
+          (<%= link_to "Logout", logout_path, method: :delete %>)</p>
+        <% end %>
 
+      </nav>
 
+      <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+      <%= yield %>
 
-
-  </nav>
-
-
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-<%= yield %>
-
-</body>
+    </div>
+  </body>
 </html>
