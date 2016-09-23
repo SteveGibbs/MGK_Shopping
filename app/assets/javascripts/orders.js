@@ -51,6 +51,9 @@ $(document).on("turbolinks:load", function() {
 
   var myTimer;
   var orderTimer = function() {
+    if ( myTimer ) {
+      return false;
+    }
     myTimer = window.setInterval(function() {
       getOrderDisplay();
     }, 4000);
