@@ -16,6 +16,7 @@ Project designed and deployed within four days as part of General Assembly's Web
 2. Shopping cart to track items and proceed to checkout
 3. Payment system to process orders
 4. Email confirmation of payment invoice
+5. Mobile responsive
 
 #### Admin
 1. Order dashboard with live polling
